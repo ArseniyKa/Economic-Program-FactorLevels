@@ -83,9 +83,9 @@ class Factors:
     
 ####вторая часть расчет несистематической сотавляющей
 class Risks:
-        def __init__(self,  Rsist, IRR):
+        def __init__(self,  Rsist):
             self.Rsist= Rsist
-            self.IRR = IRR
+
         def calculate(self, avs_matrix_values):
             non_zero_count = np.count_nonzero(avs_matrix_values)
             # find non sistematic coefficient value

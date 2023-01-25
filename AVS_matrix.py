@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
+# In[1]:
 
 
 # from pip._internal import main as pipmain
@@ -20,7 +20,6 @@ import numpy as np
 import Factors as fc
 import TableWid as tb
 import RisksWid as rk
-import GraphWid as gh
 
 import ctypes
 ###################################################
@@ -36,12 +35,12 @@ pareto_percent = 0.25
 input_list = [max_score, bin_number, threshold_percent, pareto_percent]
 
 
-# In[5]:
+# In[2]:
 
 
 def checking(root):
     try:
-            lbl_header=Label(root, text="AVS матрица: ", foreground="#555555", font=("Times New Roman", 35, "bold"), width=22, height=2)
+            lbl_header=Label(root, text="AVS матрица: ", foreground="#555555", font=("Times New Roman", 33, "bold"), width=22, height=2)
             lbl_header.pack()
             super_frame = Frame(root)
             super_frame.pack()
@@ -52,12 +51,9 @@ def checking(root):
             ###############ВТОРАЯ ЧАСТЬ#############################
             #### find nonsistematic coefficient value
             Rsist=10.4
-            IRR = 30.99
-            risks = fc.Risks(Rsist, IRR)
+            risks = fc.Risks(Rsist)
             risks.calculate(avs_matrix)
-            graph = gh.GraphWid(super_frame)
-            graph.placeGraph(risks, super_frame) 
-            rk.placeRisksWid(risks, super_frame, avs_matrix, graph)
+            rk.placeRisksWid(risks, super_frame, avs_matrix)
              
     except Exception as e:
              for widget in root.winfo_children():
@@ -71,7 +67,7 @@ def checking(root):
              lbl.pack()
 
 
-# In[6]:
+# In[3]:
 
 
 root = Tk()
